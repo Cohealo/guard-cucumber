@@ -70,9 +70,6 @@ module Guard
       def step_name(keyword, step_match, status, source_indent, background, file_colon_line)
         if [:failed, :pending, :undefined].index(status)
           @rerun = true
-          step_name = step_match.format_args(lambda { |param| "*#{ param }*" })
-
-          ::Guard::Notifier.notify step_name, :title => @feature_name, :image => icon_for(status)
         end
       end
 
